@@ -1,0 +1,53 @@
+<?php
+// IP manzilini olish
+function get_user_ip() {
+    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+        return $_SERVER['HTTP_CLIENT_IP'];
+    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+        return $_SERVER['HTTP_X_FORWARDED_FOR'];
+    } else {
+        return $_SERVER['REMOTE_ADDR'];
+    }
+}
+
+// IP manzilini faylga yozish
+$ip_address = get_user_ip();
+$file = 'ip_log.txt'; // IP manzilini saqlash uchun fayl
+file_put_contents($file, $ip_address . PHP_EOL, FILE_APPEND);
+
+// Telefon modeli va boshqa ma'lumotlarni to'plash uchun maxsus kutubxonalar kerak bo'ladi
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaxsiy Sayt</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Orqa fon rangini belgilash */
+        }
+        .background {
+            background-image: url('c:\Users\MSI\Desktop\nature.jpg'); /* Orqa fon rasmi */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        iframe {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <iframe width="656" height="369" src="https://www.youtube.com/embed/38Tmp0ChYL0" title="Ege Balkız & Burry Soprano - Affet Beni Sevgilim (lyrics/sözleri)" allowfullscreen></iframe>
+    </div>
+</body>
+</html>
